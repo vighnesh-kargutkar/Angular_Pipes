@@ -1,8 +1,12 @@
+import { DatePipe, DecimalPipe } from '@angular/common';
 import { Component } from '@angular/core';
+import { TemperaturePipe } from './temperature.pipe';
+import { SortPipe } from './sort.pipe';
 
 @Component({
   selector: 'app-root',
   standalone: true,
+  imports: [ DatePipe , DecimalPipe ,TemperaturePipe , SortPipe],
   templateUrl: './app.component.html',
 })
 export class AppComponent {
@@ -19,6 +23,8 @@ export class AppComponent {
   ];
 
   onReset(index: number) {
-    this.historicTemperatures[index] = 18;
+    const newTemps = [...this.historicTemperatures]
+    newTemps[index]=18
+    this.historicTemperatures = newTemps
   }
 }
